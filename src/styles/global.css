@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  /* Tus colores de marca */
+  --color-quinet-teal: #2F9D8F;
+  --color-quinet-gold: #E9C46A;
+  --color-quinet-light: #F4F7F8;
+  --color-quinet-dark: #1E3540;
+  --color-quinet-white: #FFFFFF;
+
+  /* Tus tipografías */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'Montserrat', sans-serif;
+}
+
+/* Fix para que los degradados de texto se vean SIEMPRE bien */
+.text-gradient-gold {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-quinet-gold to-quinet-gold;
+}
+
+.text-gradient-teal {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-quinet-teal via-white to-quinet-teal;
+}

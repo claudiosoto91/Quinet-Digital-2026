@@ -1,0 +1,113 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+// 1. Importamos las imágenes desde src/assets/portfolio/
+import imgWebReinoWood from '../../assets/portfolio/web-reinowood.png';
+import imgWebAbogados from '../../assets/portfolio/web-abogados.png';
+import imgWebSkynet from '../../assets/portfolio/web-skynet.png';
+import imgWebUh from '../../assets/portfolio/web-uh.png';
+import imgPosIndumentaria from '../../assets/portfolio/pos-indumentaria.png';
+import imgPosTurnos from '../../assets/portfolio/pos-turnos.png';
+
+const proyectos = [
+  {
+    titulo: "Web - Reino Wood",
+    categoria: "Sitio Web + Catálogo",
+    imagen: imgWebReinoWood, // Usamos la variable importada
+    desc: "Diseño desde Cero con enfoque en UX/UI y optimización SEO.",
+    enlace: "https://reinowood.com.ar"
+  },
+  {
+    titulo: "Pos Indumentaria",
+    categoria: "Sistema Post",
+    imagen: imgPosIndumentaria, // Usamos la variable importada
+    desc: "Sistema de gestión de ventas y stock para indumentaria, con interfaz intuitiva y funcionalidades personalizadas.",
+    enlace: "https://pos-indumentaria.page.gd/"
+},
+  {
+    titulo: "Sistema para Profesionales",
+    categoria: "Sistema Turnos",
+    imagen: imgPosTurnos, // Usamos la variable importada
+    desc: "Sistema de gestión de turnos y clientes para profesionales independientes, con diseño intuitivo y funcionalidad optimizada.",
+    enlace: "https://quinet-turnos.page.gd/"
+},
+  {
+    titulo: "Web - Abogados",
+    categoria: "Landing Page",
+    imagen: imgWebAbogados,
+    desc: "Página de aterrizaje optimizada para conversiones y presencia online.",
+    enlace: "https://abogadostuc.netlify.app"
+  },
+  {
+    titulo: "Web - Skynet",
+    categoria: "Sitio Web + Catálogo",
+    imagen: imgWebSkynet,
+    desc: "Sitio Web moderno con catálogo de productos y diseño responsivo para todas las plataformas.",
+    enlace: "https://skynetnorte.com.ar"
+  },
+  {
+    titulo: "Web - Uniformes Huergo",
+    categoria: "Landing Page",
+    imagen: imgWebUh,
+    desc: "Página de aterrizaje con diseño atractivo y optimización SEO para mejorar la visibilidad en línea.",
+    enlace: "https://uniformeshuergo.netlify.app"
+  }
+];
+---
+
+<Layout title="Nuestro Portfolio">
+    
+    <section class="bg-quinet-dark text-white pt-32 pb-20 relative overflow-hidden">
+        <div class="max-w-screen-xl mx-auto px-4 text-center">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-quinet-gold text-xs font-bold uppercase mb-6">
+                Resultados Reales ✨
+            </span>
+            <h1 class="font-display text-5xl md:text-7xl font-extrabold mb-6 tracking-tighter">
+                Proyectos que <br> <span class="text-gradient-teal">hablan por nosotros.</span>
+            </h1>
+        </div>
+    </section>
+
+    <section class="bg-quinet-light py-20">
+        <div class="max-w-screen-xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12">
+                
+                {proyectos.map((proyect) => (
+                    <div class="group flex flex-col">
+                        <div class="relative aspect-[4/5] overflow-hidden rounded-[3rem] bg-white shadow-2xl border border-black/5">
+                            <Image 
+                                src={proyect.imagen} 
+                                alt={`Proyecto ${proyect.titulo}`}
+                                width={1080}
+                                height={1350}
+                                format="webp"
+                                quality="mid"
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            />
+                            
+                            <div class="absolute inset-0 bg-quinet-dark/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-md">
+                                <a href={proyect.enlace} target="_blank" class="px-8 py-4 bg-quinet-gold text-quinet-dark font-black rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                                    VER DETALLES 🔍
+                                </a>
+                            </div>
+
+                            <div class="absolute top-8 left-8 bg-white/90 backdrop-blur-md px-5 py-2 rounded-2xl shadow-lg border border-black/5">
+                                <p class="text-[10px] font-black uppercase tracking-widest text-quinet-teal">{proyect.categoria}</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 px-4 flex justify-between items-end">
+                            <div>
+                                <h3 class="font-display text-3xl font-black text-quinet-dark mb-1">{proyect.titulo}</h3>
+                                <p class="text-quinet-dark/50 font-medium">{proyect.desc}</p>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+
+            </div>
+        </div>
+    </section>
+
+    </Layout>

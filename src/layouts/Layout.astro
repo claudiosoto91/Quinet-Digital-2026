@@ -1,0 +1,137 @@
+---
+import '../styles/global.css';
+
+interface Props {
+    title: string;
+    description?: string;
+}
+
+const { title, description = "Quinet Digital - Socio tecnológico para escalar tu negocio con sistemas y marketing premium." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content={description} />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title} | Quinet Digital</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    </head>
+    <body class="bg-quinet-light text-quinet-dark font-sans selection:bg-quinet-teal selection:text-white overflow-x-hidden">
+        
+        <nav class="fixed w-full z-50 top-0 start-0 border-b border-white/10 bg-quinet-dark/90 backdrop-blur-md">
+            <div class="max-w-screen-xl flex items-center justify-between mx-auto p-4 md:px-6">
+                <a href="/" class="flex items-center space-x-3 z-50">
+                    <span class="text-xl md:text-2xl font-display font-bold whitespace-nowrap text-quinet-white">
+                        QUINET<span class="text-quinet-gold">DIGITAL</span>
+                    </span>
+                </a>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <ul class="flex space-x-8 font-medium text-quinet-white/80">
+                        <li><a href="/" class="hover:text-quinet-gold transition-colors">Inicio</a></li>
+                        <li><a href="/servicios/portfolio" class="hover:text-quinet-gold transition-colors">Portfolio</a></li>
+                        <li><a href="/servicios/paginas-web" class="hover:text-quinet-gold transition-colors">Webs</a></li>
+                        <li><a href="/servicios/embudos-de-venta" class="hover:text-quinet-gold transition-colors">Funnels</a></li>
+                        <li><a href="/servicios/meta-ads" class="hover:text-quinet-gold transition-colors">Ads</a></li>
+						<li><a href="/servicios/community-manager" class="hover:text-quinet-gold transition-colors">C. Manager</a></li>
+                    </ul>
+                    <a href="https://wa.me/tu-numero" class="text-quinet-dark bg-quinet-gold hover:scale-105 font-bold rounded-full text-sm px-6 py-2 transition-all">
+                        Agendar 🚀
+                    </a>
+                </div>
+
+                <button id="menu-btn" class="md:hidden z-50 text-quinet-white p-2 focus:outline-none" aria-label="Abrir menú">
+                    <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <div id="menu-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] opacity-0 pointer-events-none transition-opacity duration-300 md:hidden"></div>
+        
+        <aside id="offcanvas-menu" class="fixed top-0 right-0 w-[80%] max-w-xs h-full bg-quinet-dark z-[70] translate-x-full transition-transform duration-300 ease-in-out md:hidden shadow-2xl flex flex-col p-8">
+            <div class="flex justify-end mb-8">
+                <button id="close-btn" class="text-quinet-white/50 hover:text-quinet-gold transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <nav class="flex flex-col space-y-6">
+                <p class="text-quinet-gold text-xs font-bold uppercase tracking-widest border-b border-white/10 pb-2">Menú</p>
+                <a href="/" class="mobile-link text-2xl font-display font-bold text-white hover:text-quinet-gold transition-colors">Inicio</a>
+                <a href="/servicios/portfolio" class="mobile-link text-2xl font-display font-bold text-white hover:text-quinet-gold transition-colors">Portfolio</a>
+                <a href="/servicios/paginas-web" class="mobile-link text-2xl font-display font-bold text-white hover:text-quinet-gold transition-colors">Webs</a>
+                <a href="/servicios/embudos-de-venta" class="mobile-link text-2xl font-display font-bold text-white hover:text-quinet-gold transition-colors">Funnels</a>
+                <a href="/servicios/meta-ads" class="mobile-link text-2xl font-display font-bold text-white hover:text-quinet-gold transition-colors">Ads</a>
+				<a href="/servicios/community-manager" class="mobile-link text-2xl font-display font-bold text-white hover:text-quinet-gold transition-colors">C. Manager</a>
+                
+                <div class="pt-8">
+                    <a href="https://wa.me/+53812529020" class="block w-full text-center text-quinet-dark bg-quinet-gold font-bold rounded-2xl py-4 transition-all active:scale-95 shadow-lg">
+                        Pedir Auditoría Gratis 🚀
+                    </a>
+                </div>
+            </nav>
+
+            <div class="mt-auto pt-10 text-center">
+                <p class="text-white/30 text-xs">Quinet Digital © 2026 <br> San Miguel de Tucumán</p>
+            </div>
+        </aside>
+
+        <main>
+            <slot /> 
+        </main>
+
+        <footer class="bg-quinet-dark text-quinet-white py-12 border-t border-white/5">
+            <div class="max-w-screen-xl mx-auto px-4 text-center">
+                <p class="font-display font-bold text-xl mb-4 text-quinet-gold">QUINET DIGITAL</p>
+                <p class="text-white/50 text-sm">© 2026 San Miguel de Tucumán. <br> Transformando negocios con tecnología y estrategia.</p>
+            </div>
+        </footer>
+
+        <script>
+            const menuBtn = document.getElementById('menu-btn');
+            const closeBtn = document.getElementById('close-btn');
+            const offcanvasMenu = document.getElementById('offcanvas-menu');
+            const overlay = document.getElementById('menu-overlay');
+            const body = document.body;
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            function toggleMenu() {
+                if (offcanvasMenu && overlay) {
+                    offcanvasMenu.classList.toggle('translate-x-full');
+                    overlay.classList.toggle('opacity-0');
+                    overlay.classList.toggle('pointer-events-none');
+                    body.classList.toggle('overflow-hidden'); // Evita scroll atrás
+                }
+            }
+
+            menuBtn?.addEventListener('click', toggleMenu);
+            closeBtn?.addEventListener('click', toggleMenu);
+            overlay?.addEventListener('click', toggleMenu);
+
+            // Cerrar menú al hacer clic en un link
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', toggleMenu);
+            });
+        </script>
+
+    </body>
+</html>
+
+<style is:global>
+    h1, h2, h3, h4 {
+        font-family: 'Montserrat', sans-serif;
+    }
+    body {
+        font-family: 'Inter', sans-serif;
+    }
+</style>
