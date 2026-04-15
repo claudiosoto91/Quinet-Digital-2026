@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Analytics from '@vercel/analytics/astro'
 import { getImage } from 'astro:assets';
 import imgLogo from '../assets/logo-q.png';
 
@@ -128,6 +129,8 @@ const { title, description = "Quinet Digital - Socio tecnológico para escalar t
                 link.addEventListener('click', toggleMenu);
             });
         </script>
+
+        <Analytics />
 
     </body>
 </html>
